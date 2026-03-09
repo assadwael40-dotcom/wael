@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wael ❤️ Lolo | Our Memories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --main-pink: #ff4d6d;
+            --glass: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+
+        body {
+            background: #020617;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            background: radial-gradient(circle at center, #1e1b4b 0%, #020617 100%);
+        }
+
+        /* شاشة القفل */
+        #lockScreen {
+            position: fixed; inset: 0; background: #020617;
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2000; transition: 1s ease;
+        }
+
+        .login-box {
+            background: var(--glass); backdrop-filter: blur(20px);
+            padding: 40px; border-radius: 40px; border: 1px solid var(--border);
+            text-align: center; width: 90%; max-width: 400px;
+        }
+
+        input {
+            width: 100%; padding: 15px; border-radius: 30px; border: 1px solid var(--border);
+            background: rgba(0,0,0,0.3); color: white; text-align: center;
+            font-size: 1.2rem; margin: 20px 0; outline: none;
+        }
+
+        .btn-main {
+            background: var(--main-pink); color: white; padding: 12px 40px;
+            border: none; border-radius: 30px; font-weight: bold; cursor: pointer;
+            transition: 0.3s; box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+            text-decoration: none; display: inline-block; margin: 10px 0;
+        }
+
+        .btn-main:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+        /* المحتوى الرئيسي */
+        #mainContent {
+            display: none; opacity: 0; width: 100%; max-width: 600px;
+            padding: 20px; text-align: center; transition: 1.5s ease;
+        }
+
+        .card {
+            background: var(--glass); backdrop-filter: blur(15px);
+            border-radius: 35px; padding: 25px; margin-bottom: 25px;
+            border: 1px solid var(--border); position: relative;
+        }
+
+        .img-frame { width: 100%; border-radius: 25px; border: 2px solid var(--main-pink); }
+
+        /* الأقسام المخفية */
+        .hidden-section {
+            display: none; margin-top: 20px;
+            background: linear-gradient(135deg, rgba(255,77,109,0.2), rgba(30,27,75,0.4));
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .big-text { font-size: 2.5rem; color: var(--main-pink); font-weight: bold; }
+        
+        .heart { position: fixed; pointer-events: none; z-index: 1500; animation: floatUp 4s linear forwards; }
+        @keyframes floatUp { 0% { transform: translateY(110vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div id="lockScreen">
+        <div class="login-box">
+            <h2 style="font-family: 'Dancing Script'; font-size: 3rem; color: var(--main-pink);">Lolo & Wael ❤️</h2>
+            <input type="password" id="passInput" placeholder="اكتبي lolo هنا...">
+            <button class="btn-main" onclick="unlock()">دخول</button>
+        </div>
+    </div>
+
+    <div id="mainContent">
+        <div class="card">
+            <h1 style="font-family: 'Dancing Script'; font-size: 2.5rem; color: var(--main-pink); margin-bottom: 15px;">Forever Together</h1>
+            <img src="us.jpg" class="img-frame" alt="Together">
+            <p style="margin-top: 15px; font-weight: bold;">أجمل لقطة بتجمع أغلى حكاية</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button class="btn-main" style="background: #4361ee;" onclick="toggleSection('storyCard')">
+                📅 اليوم التعرفنا فيه علي بعض
+            </button>
+
+            <button class="btn-main" style="background: #7209b7;" onclick="toggleSection('firstEditCard')">
+                🖼️ دي اول صوره ركبتيها لنا مع بعض
+            </button>
+        </div>
+
+        <div id="storyCard" class="card hidden-section">
+            <h3 style="margin-bottom: 15px;">منذ تلك اللحظة.. تغيرت حياتي</h3>
+            <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                <div><span class="big-text">5</span><br>شهور</div>
+                <div><span class="big-text">3</span><br>أيام</div>
+            </div>
+            <p style="line-height: 1.8; font-style: italic; color: #eee;">
+                "في اليوم ده، الدنيا ضحكتلي وبدأت أجمل حكاية في عمري. Lolo.. إنتي رزق من ربنا ❤️"
+            </p>
+        </div>
+
+        <div id="firstEditCard" class="card hidden-section">
+            <h3 style="margin-bottom: 15px;">بداية الفن والجمال</h3>
+            <img src="5f38f125-716e-4bbd-b3a0-d0b07bc10b7e.jpg" class="img-frame" alt="First Edit">
+            <p style="margin-top: 15px; line-height: 1.8; color: #eee;">
+                "فاكرة الصورة دي؟ دي كانت أول مرة تجمعينا سوا بإيدك المبدعة.. <br>
+                من وقتها عرفت إن لمستك بتخلي كل حاجة أجمل، حتى صورنا مع بعض بقت حقيقة في قلبي قبل ما تكون في الصورة."
+            </p>
+        </div>
+
+        <div class="card">
+            <h3 style="opacity: 0.7;">أغلى يوم في التاريخ 🎂</h3>
+            <div style="font-size: 2.2rem; color: var(--main-pink); font-weight: bold;">25 / 11 / 2010</div>
+        </div>
+    </div>
+
+    <script>
+        function unlock() {
+            if(document.getElementById('passInput').value.toLowerCase() === 'lolo') {
+                document.getElementById('lockScreen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('lockScreen').style.display = 'none';
+                    const mc = document.getElementById('mainContent');
+                    mc.style.display = 'block';
+                    document.body.style.overflow = 'auto';
+                    setTimeout(() => mc.style.opacity = '1', 100);
+                    rainHearts();
+                }, 1000);
+            }
+        }
+
+        function toggleSection(id) {
+            const sections = ['storyCard', 'firstEditCard'];
+            sections.forEach(s => {
+                if (s === id) {
+                    const el = document.getElementById(s);
+                    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+                    if (el.style.display === 'block') {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                        rainHearts();
+                    }
+                } else {
+                    document.getElementById(s).style.display = 'none';
+                }
+            });
+        }
+
+        function rainHearts() {
+            for(let i=0; i<40; i++) {
+                setTimeout(() => {
+                    const h = document.createElement('div');
+                    h.className = 'heart';
+                    h.innerHTML = '❤️';
+                    h.style.left = Math.random() * 100 + 'vw';
+                    h.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    document.body.appendChild(h);
+                    setTimeout(() => h.remove(), 4000);
+                }, i * 60);
+            }
+        }
+    </script>
+</body>
+</html>
